@@ -47,7 +47,22 @@ final class StatusBarController: NSObject, NSMenuDelegate {
         quitItem.target = self
         menu.addItem(quitItem)
 
-        statusItem.menu = menu
+        // Don't assign menu here — left-click toggles, right-click shows menu via handleClick.
+        statusItem.button?.action = #selector(handleClick(_:))
+        statusItem.button?.target = self
+        statusItem.button?.sendAction(on: [.leftMouseUp, .rightMouseUp])
+    }
+
+    @objc private func handleClick(_ sender: NSStatusBarButton) {
+        guard let event = NSApp.currentEvent else { return }
+        if event.type == .rightMouseUp {
+            // Temporarily attach menu so the system can pop it up, then detach
+            statusItem.menu = menu
+            statusItem.button?.performClick(nil)
+            statusItem.menu = nil
+        } else {
+            micManager.toggle()
+        }
     }
 
     func menuWillOpen(_ menu: NSMenu) {
