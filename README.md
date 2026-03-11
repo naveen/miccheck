@@ -45,6 +45,12 @@ MicCheck cannot coexist with other mic manager apps that also enforce mic state 
 
 ---
 
+## Download
+
+[Download MicCheck v1.0.0](https://github.com/naveen/miccheck/releases/latest)
+
+---
+
 ## Requirements
 
 - macOS 13.0 (Ventura) or later
