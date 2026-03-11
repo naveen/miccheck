@@ -3,7 +3,7 @@ import CoreAudio
 import Foundation
 
 extension Notification.Name {
-    static let microphoneStateChanged = Notification.Name("com.miccheck.micStateChanged")
+    static let microphoneStateChanged = Notification.Name("com.naveen.miccheck.micStateChanged")
 }
 
 final class MicrophoneManager: ObservableObject {

@@ -97,10 +97,19 @@ struct PreferencesView: View {
             Divider()
 
             // Footer
-            HStack {
-                Text("MicCheck v1.0")
+            HStack(spacing: 4) {
+                Text("© 2026")
                     .font(.caption)
                     .foregroundStyle(.tertiary)
+                Link("naveen.com", destination: URL(string: "https://naveen.com")!)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                Text("·")
+                    .font(.caption)
+                    .foregroundStyle(.tertiary)
+                Link("@naveen", destination: URL(string: "https://x.com/naveen")!)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
                 Spacer()
                 Button("Quit") { NSApp.terminate(nil) }
                     .buttonStyle(.borderless)

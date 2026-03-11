@@ -57,18 +57,25 @@ MicCheck cannot coexist with other mic manager apps that also enforce mic state 
 ```bash
 git clone <repo>
 cd miccheck
-xcodebuild -project MicCheck.xcodeproj -scheme MicCheck -configuration Release build CODE_SIGN_IDENTITY="-"
+xcodebuild -project MicCheck.xcodeproj -scheme MicCheck -configuration Release build CODE_SIGN_IDENTITY="-" CONFIGURATION_BUILD_DIR=./build/Release
 ```
 
-The built app will be in `~/Library/Developer/Xcode/DerivedData/MicCheck-*/Build/Products/Release/MicCheck.app`.
-
-Open it with:
+The built app will be at `./build/Release/MicCheck.app`. Move it to `/Applications` or open it directly:
 
 ```bash
-open ~/Library/Developer/Xcode/DerivedData/MicCheck-*/Build/Products/Release/MicCheck.app
+open ./build/Release/MicCheck.app
 ```
 
-Or, move it to /Applications and open it from Finder.
+### Gatekeeper Warning
+
+Because MicCheck is not notarized through Apple's developer program, macOS will block it on first launch. To open it anyway:
+
+- **Right-click → Open → Open** in Finder, or
+- Strip the quarantine attribute from the terminal:
+
+```bash
+xattr -d com.apple.quarantine /Applications/MicCheck.app
+```
 
 ---
 
