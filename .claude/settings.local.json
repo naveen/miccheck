@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xcodebuild -project MicCheck.xcodeproj -scheme MicCheck -configuration Debug build CODE_SIGNING_ALLOWED=NO 2>&1 | grep -E \"error:|BUILD SUCCEEDED|BUILD FAILED\")",
+      "Bash(xcodebuild -project MicCheck.xcodeproj -scheme MicCheck -configuration Debug build CODE_SIGN_IDENTITY=\"-\" 2>&1 | grep -E \"error:|warning:|BUILD\")"
+    ]
+  }
+}
